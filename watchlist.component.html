@@ -1,0 +1,77 @@
+<div>
+ <div  class="main1">
+  <div class="texthead">
+    <div class=" tittle1" style="inset-inline-start: 25px;">
+      <div  style="flex-direction: column;">
+        <h2  style="margin: 0; margin-top: 5px;"> Account Balance :{{500}}</h2>
+        <div style="margin-top: 14px;" >
+          <button mat-button (click)="openPopup()" style="color: aliceblue; background-color: #0eaef8 ;margin-right: 20px;"  >Recharge</button>
+          <button mat-button (click)="openPopup()"style="color: aliceblue;background-color: #0eaef8 ">withdraw</button>
+        </div>
+      </div>
+      <div id="timer"><p class="id2" >Count Down</p>{{ minutesDisplay }}:{{ secondsDisplay }}</div> 
+     </div>
+    <br>
+  </div>
+  <div class="color3" >
+      <div [style.color]="colors"  *ngFor="let color of colors" >
+          <button   mat-button [ngClass]="{'active1':color===displaycolor}" style="color: aliceblue;"
+            (click)="setcolor(color)" [style.background-color]="color" [disabled]="timerExpired">{{ color }}</button>
+      </div>
+  </div> <br>
+  <div class="button-container">
+   
+      <div class="buttonmain10" *ngFor="let number of number"   >
+        <button mat-button [ngClass]="{'active':number===displaynumber}" 
+         style="background-color: #0d8fb3;color: aliceblue;font-size:large; "(click)="setNumber(number)" 
+         [disabled]="timerExpired">{{number}}</button>
+      </div>
+    </div>
+  </div> 
+  
+    <div class="selectrd" ><p class="color2"  >Selected Color : {{displaycolor}}</p><div class="circle1" [style.background-color]="displaycolor" ></div>
+      <p class="numberseleted">Selected Number :{{displaynumber}}</p>
+    </div>
+  
+  <div class="table1" style="max-width: 390px; margin: 0 auto;">
+    <table mat-table   [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="Srno">
+      <th mat-header-cell *matHeaderCellDef> # </th>
+      <td  mat-cell *matCellDef="let element"> {{element.Srno}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="BidNo">
+      <th   mat-header-cell *matHeaderCellDef>  BidNo </th>
+      <td  mat-cell *matCellDef="let element"> {{element. BidNo}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Select">
+      <th   mat-header-cell *matHeaderCellDef> Select <p>C/N</p></th>
+      <td  mat-cell *matCellDef="let element" > {{element.Select}} </td>
+    </ng-container>
+   
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Result">
+      <th  mat-header-cell *matHeaderCellDef> Result <p>C/N</p></th>
+      <td  mat-cell *matCellDef="let element" > {{element.Result}} </td>
+    </ng-container>
+      
+    
+     <ng-container matColumnDef="Output">
+      <th  mat-header-cell *matHeaderCellDef> Output </th>
+      <td  mat-cell *matCellDef="let element"> {{element.Output}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+   
+</div>
